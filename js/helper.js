@@ -86,8 +86,22 @@ function logClicks(x,y) {
 }
 
 $(document).click(function(loc) {
-  // your code goes here!
+  logClicks(loc.pageX, loc.pageY);
 });
+
+
+/**
+ * Added as part of lesson 10, quiz 11
+ * @param name
+ */
+function inName(name) {
+    var split = name.split(' ');
+
+    split[0] = split[0].charAt(0).toUpperCase() + split[0].slice(1).toLowerCase();
+    split[1] = split[1].toUpperCase();
+
+    return split.join(' ');
+}
 
 
 
@@ -96,7 +110,7 @@ This is the fun part. Here's where we generate the custom Google Map for the web
 See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
-var map;    // declares a global map variable
+var map = {};    // declares a global map variable
 
 
 /*
@@ -239,11 +253,11 @@ Uncomment the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
-  //Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+window.addEventListener('resize', function(e) {
+//  Make sure the map bounds get updated on page resize
+ map.fitBounds(mapBounds);
+});
